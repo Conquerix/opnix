@@ -80,6 +80,7 @@ in {
           Type = "oneshot";
           EnvironmentFile = cfg.environmentFile;
           RemainAfterExit = true;
+          RestartSec = 30;
         };
 
         script = opnixScript;
