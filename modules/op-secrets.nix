@@ -74,7 +74,7 @@ in {
     {
       systemd.services.opnix = {
         wants = [ "network-online.target" ];
-        after = [ "network.target" "network-online.target" ];
+        after = [ "network.target" "network-online.target" "nss-lookup.target" ];
 
         serviceConfig = {
           Type = "oneshot";
