@@ -81,6 +81,7 @@ in {
           EnvironmentFile = cfg.environmentFile;
           RemainAfterExit = true;
           RestartSec = 30;
+          ExecStartPre="${pkgs.coreutils-full}/bin/sleep 30";
         };
 
         script = opnixScript;
