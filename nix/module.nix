@@ -75,6 +75,12 @@ in {
     secrets = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule ({ config, ... }: {
         options = {
+          name = mkOption {
+            type = types.str;
+            default = config._module.args.name;
+            description = "Name of the file used in {option}`services.onepassword-secrets.outputDir`";
+          };
+
           reference = lib.mkOption {
             type = lib.types.str;
             description = "1Password reference in the format op://Vault/Item/field";
