@@ -75,8 +75,8 @@ in {
     secrets = lib.mkOption {
       type = lib.types.attrsOf (lib.types.submodule ({ config, ... }: {
         options = {
-          name = mkOption {
-            type = types.str;
+          name = lib.mkOption {
+            type = lib.types.str;
             default = config._module.args.name;
             description = "Name of the file used in {option}`services.onepassword-secrets.outputDir`";
           };
