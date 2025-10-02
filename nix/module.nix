@@ -73,7 +73,7 @@ in {
     };
 
     secrets = lib.mkOption {
-      type = lib.types.attrsOf (lib.types.submodule {
+      type = lib.types.attrsOf (lib.types.submodule ({ config, ... }: {
         options = {
           reference = lib.mkOption {
             type = lib.types.str;
@@ -83,7 +83,7 @@ in {
 
           path = lib.mkOption {
             type = lib.types.nullOr lib.types.str;
-            default = null;
+            default = "${cfg.outputDir}/${config.name}";
             description = "Custom path for the secret file. If null, uses pathTemplate or outputDir + secret name";
             example = "/etc/ssl/certs/app.pem";
           };
@@ -163,7 +163,7 @@ in {
             ];
           };
         };
-      });
+      }));
       default = {};
       description = ''
         Declarative secrets configuration (GitHub #11).
